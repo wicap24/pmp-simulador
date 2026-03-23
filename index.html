@@ -934,15 +934,6 @@ THEME SYSTEM — 6 eye-rest palettes
 }
 
 /* 2 · WARM PARCHMENT — aged paper, cream */
-[data-theme=“parchment”] {
-–bg0:#ede4d0; –bg1:#f5edd8; –bg2:#ede3cb; –bg3:#e3d8bc; –bg4:#d5c9a8;
-–b1:rgba(100,70,30,0.06); –b2:rgba(100,70,30,0.12); –b3:rgba(100,70,30,0.20);
-–t1:#261d0e; –t2:#6e5230; –t3:#a88c62;
-–cyan:#2a6e5e; –purple:#6e4e96; –green:#3a6e3a;
-–red:#b83030; –yellow:#a07010; –orange:#b06020;
-–shadow:rgba(80,50,20,.14);
-color-scheme:light;
-}
 
 /* 3 · SOFT ASH — neutral editorial grey */
 [data-theme=“ash”] {
@@ -956,24 +947,8 @@ color-scheme:light;
 }
 
 /* 4 · FOREST DUSK — deep green, most restful */
-[data-theme=“forest”] {
-–bg0:#141d17; –bg1:#1b2620; –bg2:#222e28; –bg3:#2a3832; –bg4:#32443c;
-–b1:rgba(200,255,200,0.04); –b2:rgba(200,255,200,0.07); –b3:rgba(200,255,200,0.12);
-–t1:#d0e8d4; –t2:#74a87c; –t3:#486850;
-–cyan:#4ecda0; –purple:#a07ade; –green:#68d48a;
-–red:#f07070; –yellow:#f0c840; –orange:#f09030;
-–shadow:rgba(0,0,0,.48);
-}
 
 /* 5 · SEPIA STUDIO — dark warm brown, candlelight */
-[data-theme=“sepia”] {
-–bg0:#18100a; –bg1:#201610; –bg2:#2a1e14; –bg3:#34261a; –bg4:#403020;
-–b1:rgba(240,200,120,0.04); –b2:rgba(240,200,120,0.08); –b3:rgba(240,200,120,0.14);
-–t1:#eee0b8; –t2:#a88848; –t3:#745a30;
-–cyan:#e09a28; –purple:#c87850; –green:#78b878;
-–red:#d84848; –yellow:#d4b030; –orange:#c86028;
-–shadow:rgba(0,0,0,.55);
-}
 
 /* 6 · ARCTIC WHITE — clean Scandinavian, airy */
 [data-theme=“arctic”] {
@@ -987,12 +962,6 @@ color-scheme:light;
 }
 
 /* Light-theme adjustments */
-[data-theme=“parchment”] body::before,
-[data-theme=“ash”] body::before,
-[data-theme=“arctic”] body::before { opacity:0 !important; }
-[data-theme=“parchment”] body::after,
-[data-theme=“ash”] body::after,
-[data-theme=“arctic”] body::after { opacity:.3 !important; }
 
 /* ── THEME PICKER ── */
 .theme-grid {
@@ -1852,23 +1821,42 @@ cursor: pointer; transition: all .15s; width: 100%; margin-top: 8px;
 .hsc-stats { gap: 10px; }
 }
 
-/* ══ LIQUID GLASS LIGHT (iOS 26) ══ */
+/* ══ LIQUID GLASS LIGHT (iOS 26 — frosted, translucent) ══ */
 [data-theme=“glass”] {
-–bg0:#dce8f5; –bg1:#e8f0f8; –bg2:rgba(255,255,255,0.55);
-–bg3:rgba(255,255,255,0.35); –bg4:rgba(255,255,255,0.20);
-–b1:rgba(255,255,255,0.60); –b2:rgba(180,200,220,0.35); –b3:rgba(140,170,200,0.50);
-–t1:#0a1628; –t2:#2d4a6a; –t3:#6a8faf;
-–cyan:#0066cc; –purple:#5e35b1; –green:#1b7a40;
-–red:#c0392b; –yellow:#9a7000; –orange:#b05000;
-–shadow:rgba(0,60,120,0.15); color-scheme:light;
+–bg0: rgba(230,240,255,0.60);
+–bg1: rgba(240,245,255,0.50);
+–bg2: rgba(255,255,255,0.38);
+–bg3: rgba(255,255,255,0.25);
+–bg4: rgba(255,255,255,0.15);
+–b1:  rgba(255,255,255,0.50);
+–b2:  rgba(200,215,240,0.40);
+–b3:  rgba(160,185,220,0.55);
+–t1:  #07111f;
+–t2:  #1e3a5a;
+–t3:  #4a7090;
+–cyan:   #0055cc;
+–purple: #6d28d9;
+–green:  #0f6b38;
+–red:    #be1a1a;
+–yellow: #8a5e00;
+–orange: #a04200;
+–shadow: rgba(0,50,120,0.12);
+color-scheme: light;
 }
-[data-theme=“glass”] body {
-background: linear-gradient(145deg,#dce8f5 0%,#e8f0f8 35%,#f0e8f8 70%,#e0eef8 100%) !important;
-background-attachment: fixed !important;
+/* Layered gradient background — the “glass sits on top of color” feel */
+html[data-theme=“glass”] {
+background:
+radial-gradient(ellipse 120% 80% at 20% 0%,   rgba(180,210,255,0.90) 0%, transparent 55%),
+radial-gradient(ellipse 100% 70% at 80% 100%,  rgba(210,180,255,0.80) 0%, transparent 55%),
+radial-gradient(ellipse 80%  60% at 55% 50%,   rgba(200,230,255,0.60) 0%, transparent 70%),
+#dde8f8 !important;
 }
-[data-theme=“glass”] body::before { opacity:0 !important; }
-[data-theme=“glass”] body::after  { opacity:0 !important; }
-[data-theme=“glass”] .screen { background:transparent !important; }
+[data-theme=“glass”] body  { background: transparent !important; }
+[data-theme=“glass”] .screen { background: transparent !important; }
+[data-theme=“glass”] body::before { opacity: 0 !important; }
+[data-theme=“glass”] body::after  { opacity: 0 !important; }
+
+/* Cards — frosted glass with specular top edge */
 [data-theme=“glass”] .mode-card,
 [data-theme=“glass”] .user-card,
 [data-theme=“glass”] .opt,
@@ -1880,55 +1868,88 @@ background-attachment: fixed !important;
 [data-theme=“glass”] .panel-card,
 [data-theme=“glass”] .expl-box,
 [data-theme=“glass”] .user-session-bar {
-background:rgba(255,255,255,0.52) !important;
-border:1px solid rgba(255,255,255,0.75) !important;
-backdrop-filter:blur(16px) saturate(180%) !important;
--webkit-backdrop-filter:blur(16px) saturate(180%) !important;
-box-shadow:0 4px 24px rgba(0,60,120,0.08),inset 0 1px 0 rgba(255,255,255,0.8) !important;
+background: rgba(255,255,255,0.38) !important;
+border: 1px solid rgba(255,255,255,0.65) !important;
+backdrop-filter: blur(28px) saturate(160%) brightness(1.05) !important;
+-webkit-backdrop-filter: blur(28px) saturate(160%) brightness(1.05) !important;
+box-shadow:
+0 2px 20px rgba(0,50,140,0.07),
+inset 0 1px 0 rgba(255,255,255,0.85),
+inset 0 -1px 0 rgba(200,210,240,0.20) !important;
 }
+[data-theme=“glass”] .mode-card:hover,
+[data-theme=“glass”] .opt:hover { background: rgba(255,255,255,0.52) !important; }
+
+/* Navigation — slightly less transparent for readability */
 [data-theme=“glass”] .topnav,
 [data-theme=“glass”] .quiz-header {
-background:rgba(220,232,245,0.80) !important;
-backdrop-filter:blur(24px) saturate(200%) !important;
--webkit-backdrop-filter:blur(24px) saturate(200%) !important;
-border-bottom:1px solid rgba(255,255,255,0.60) !important;
+background: rgba(215,230,252,0.72) !important;
+backdrop-filter: blur(32px) saturate(180%) !important;
+-webkit-backdrop-filter: blur(32px) saturate(180%) !important;
+border-bottom: 1px solid rgba(255,255,255,0.55) !important;
+box-shadow: 0 1px 0 rgba(0,50,120,0.06) !important;
 }
 [data-theme=“glass”] .nav-user {
-background:rgba(255,255,255,0.50) !important;
-border:1px solid rgba(255,255,255,0.70) !important;
-}
-[data-theme=“glass”] .sheet,
-[data-theme=“glass”] .pmp-modal {
-background:rgba(236,244,252,0.90) !important;
-backdrop-filter:blur(40px) saturate(200%) !important;
--webkit-backdrop-filter:blur(40px) saturate(200%) !important;
-border:1px solid rgba(255,255,255,0.75) !important;
-}
-[data-theme=“glass”] .btn-next-wrap {
-background:linear-gradient(transparent,rgba(220,232,245,0.92) 45%) !important;
-}
-[data-theme=“glass”] .mode-card.featured {
-background:rgba(220,235,255,0.55) !important;
-border:1px solid rgba(100,160,255,0.30) !important;
+background: rgba(255,255,255,0.40) !important;
+border: 1px solid rgba(255,255,255,0.65) !important;
 }
 
-/* ══ LIQUID GLASS DARK (iOS 26) ══ */
+/* Sheets — more opaque for readability over complex content */
+[data-theme=“glass”] .sheet,
+[data-theme=“glass”] .pmp-modal {
+background: rgba(230,240,255,0.82) !important;
+backdrop-filter: blur(48px) saturate(200%) brightness(1.04) !important;
+-webkit-backdrop-filter: blur(48px) saturate(200%) brightness(1.04) !important;
+border: 1px solid rgba(255,255,255,0.72) !important;
+box-shadow: 0 20px 60px rgba(0,50,140,0.12), inset 0 1px 0 rgba(255,255,255,0.9) !important;
+}
+[data-theme=“glass”] .btn-next-wrap {
+background: linear-gradient(transparent, rgba(220,232,250,0.88) 40%) !important;
+backdrop-filter: blur(12px) !important;
+-webkit-backdrop-filter: blur(12px) !important;
+}
+[data-theme=“glass”] .mode-card.featured,
+[data-theme=“glass”] .iv-module-card.featured {
+background: rgba(210,228,255,0.44) !important;
+border: 1px solid rgba(100,160,255,0.38) !important;
+}
+
+/* ══ LIQUID GLASS DARK (iOS 26 — deep indigo, clearly ≠ Slate Night) ══ */
 [data-theme=“glass-dark”] {
-–bg0:#0d1117; –bg1:#12182a; –bg2:rgba(255,255,255,0.07);
-–bg3:rgba(255,255,255,0.05); –bg4:rgba(255,255,255,0.03);
-–b1:rgba(255,255,255,0.06); –b2:rgba(255,255,255,0.10); –b3:rgba(255,255,255,0.16);
-–t1:#e8f0ff; –t2:#8aaac8; –t3:#4a6a88;
-–cyan:#4ab3ff; –purple:#a78bfa; –green:#34d399;
-–red:#f87171; –yellow:#fbbf24; –orange:#fb923c;
-–shadow:rgba(0,20,60,0.50); color-scheme:dark;
+–bg0: rgba(8,6,20,0.95);
+–bg1: rgba(12,8,28,0.90);
+–bg2: rgba(130,100,255,0.10);
+–bg3: rgba(110,80,240,0.07);
+–bg4: rgba(90,60,200,0.05);
+–b1:  rgba(150,120,255,0.10);
+–b2:  rgba(160,130,255,0.16);
+–b3:  rgba(180,150,255,0.24);
+–t1:  #f0eeff;
+–t2:  #a89fcc;
+–t3:  #6058a0;
+–cyan:   #818cf8;
+–purple: #c084fc;
+–green:  #4ade80;
+–red:    #fb7185;
+–yellow: #fbbf24;
+–orange: #fb923c;
+–shadow: rgba(0,0,40,0.70);
+color-scheme: dark;
 }
-[data-theme=“glass-dark”] body {
-background:linear-gradient(145deg,#0a0e1a 0%,#0d1420 35%,#130d20 70%,#0a1020 100%) !important;
-background-attachment:fixed !important;
+/* Deep indigo-violet background — unmistakably different from flat Slate Night */
+html[data-theme=“glass-dark”] {
+background:
+radial-gradient(ellipse 130% 70% at 15% 10%,  rgba(80,40,180,0.55) 0%, transparent 55%),
+radial-gradient(ellipse 100% 80% at 85% 90%,  rgba(120,20,160,0.45) 0%, transparent 55%),
+radial-gradient(ellipse 70%  60% at 50% 50%,  rgba(40,20,100,0.60) 0%, transparent 70%),
+#06040f !important;
 }
-[data-theme=“glass-dark”] body::before { opacity:0.5 !important; }
-[data-theme=“glass-dark”] body::after  { opacity:0 !important; }
-[data-theme=“glass-dark”] .screen { background:transparent !important; }
+[data-theme=“glass-dark”] body  { background: transparent !important; }
+[data-theme=“glass-dark”] .screen { background: transparent !important; }
+[data-theme=“glass-dark”] body::before { opacity: 0 !important; }
+[data-theme=“glass-dark”] body::after  { opacity: 0 !important; }
+
+/* Cards — dark glass with indigo/violet tint, visible specular */
 [data-theme=“glass-dark”] .mode-card,
 [data-theme=“glass-dark”] .user-card,
 [data-theme=“glass-dark”] .opt,
@@ -1940,37 +1961,59 @@ background-attachment:fixed !important;
 [data-theme=“glass-dark”] .panel-card,
 [data-theme=“glass-dark”] .expl-box,
 [data-theme=“glass-dark”] .user-session-bar {
-background:rgba(255,255,255,0.06) !important;
-border:1px solid rgba(255,255,255,0.11) !important;
-backdrop-filter:blur(20px) saturate(160%) !important;
--webkit-backdrop-filter:blur(20px) saturate(160%) !important;
-box-shadow:0 4px 24px rgba(0,10,40,0.40),inset 0 1px 0 rgba(255,255,255,0.08) !important;
+background: rgba(100,70,220,0.12) !important;
+border: 1px solid rgba(160,130,255,0.20) !important;
+backdrop-filter: blur(28px) saturate(140%) !important;
+-webkit-backdrop-filter: blur(28px) saturate(140%) !important;
+box-shadow:
+0 4px 24px rgba(0,0,40,0.50),
+inset 0 1px 0 rgba(200,180,255,0.12),
+inset 0 -1px 0 rgba(80,40,180,0.10) !important;
 }
+[data-theme=“glass-dark”] .mode-card:hover,
+[data-theme=“glass-dark”] .opt:hover {
+background: rgba(120,90,240,0.18) !important;
+}
+
+/* Nav — deep with violet shimmer */
 [data-theme=“glass-dark”] .topnav,
 [data-theme=“glass-dark”] .quiz-header {
-background:rgba(10,14,26,0.85) !important;
-backdrop-filter:blur(24px) saturate(180%) !important;
--webkit-backdrop-filter:blur(24px) saturate(180%) !important;
-border-bottom:1px solid rgba(255,255,255,0.08) !important;
+background: rgba(8,5,22,0.82) !important;
+backdrop-filter: blur(32px) saturate(160%) !important;
+-webkit-backdrop-filter: blur(32px) saturate(160%) !important;
+border-bottom: 1px solid rgba(140,110,255,0.18) !important;
+box-shadow: 0 1px 0 rgba(100,60,220,0.15) !important;
 }
 [data-theme=“glass-dark”] .nav-user {
-background:rgba(255,255,255,0.08) !important;
-border:1px solid rgba(255,255,255,0.12) !important;
+background: rgba(100,70,220,0.14) !important;
+border: 1px solid rgba(160,130,255,0.22) !important;
 }
+
+/* Sheets — deep glass */
 [data-theme=“glass-dark”] .sheet,
 [data-theme=“glass-dark”] .pmp-modal {
-background:rgba(12,16,28,0.92) !important;
-backdrop-filter:blur(40px) !important;
--webkit-backdrop-filter:blur(40px) !important;
-border:1px solid rgba(255,255,255,0.10) !important;
+background: rgba(10,6,28,0.88) !important;
+backdrop-filter: blur(48px) saturate(160%) !important;
+-webkit-backdrop-filter: blur(48px) saturate(160%) !important;
+border: 1px solid rgba(150,120,255,0.22) !important;
+box-shadow: 0 20px 60px rgba(0,0,40,0.65), inset 0 1px 0 rgba(180,150,255,0.10) !important;
 }
 [data-theme=“glass-dark”] .btn-next-wrap {
-background:linear-gradient(transparent,rgba(12,16,28,0.92) 45%) !important;
+background: linear-gradient(transparent, rgba(8,5,22,0.90) 40%) !important;
+backdrop-filter: blur(12px) !important;
+-webkit-backdrop-filter: blur(12px) !important;
 }
-[data-theme=“glass-dark”] .mode-card.featured {
-background:rgba(74,179,255,0.08) !important;
-border:1px solid rgba(74,179,255,0.20) !important;
+[data-theme=“glass-dark”] .mode-card.featured,
+[data-theme=“glass-dark”] .iv-module-card.featured {
+background: rgba(120,80,255,0.15) !important;
+border: 1px solid rgba(160,120,255,0.28) !important;
 }
+
+/* Ensure non-glass themes use CSS vars properly */
+[data-theme=“slate”] body,
+
+html[data-theme=“slate”],
+html
 
 </style>
 </head>
@@ -2610,6 +2653,13 @@ function loadS() {
 function saveS() {
   try { localStorage.setItem('pmp7s3', JSON.stringify(S)); } catch(e){}
 }
+
+function syncAllSpeedDisplays() {
+  var spd = (S.ttsSpeed||1.0).toFixed(1) + '×';
+  var e1 = document.getElementById('tts-speed-val'); if(e1) e1.textContent = spd;
+  var e2 = document.getElementById('iv-speed-val');  if(e2) e2.textContent = spd;
+}
+
 function applyS() {
   S.timer      = document.getElementById('st-timer').checked;
   S.sound      = document.getElementById('st-sound').checked;
@@ -2637,6 +2687,9 @@ function applyS() {
   // Show/hide TTS bar in quiz
   const ttsBar = document.getElementById('tts-bar');
   if (ttsBar) ttsBar.style.display = S.tts ? 'flex' : 'none';
+
+  // Sync speed displays across all interfaces
+  syncAllSpeedDisplays();
 
   // Auto-read on question load if enabled
   saveS();
@@ -3459,13 +3512,10 @@ function syncTimerToggleUI() {
 // ═══════════════════════════════════════════════════════
 const THEMES = [
   { id:'slate',     name:'Slate Night',   desc:'Azul oscuro',    dots:['#1e2433','#00e5ff','#c084fc'], bg:'#1e2433', fg:'#dce4f5', bd:'#2d3650' },
-  { id:'parchment', name:'Parchment',     desc:'Crema suave',    dots:['#f5edd8','#2a6e5e','#6e4e96'], bg:'#f5edd8', fg:'#261d0e', bd:'#d5c9a8' },
   { id:'ash',       name:'Soft Ash',      desc:'Gris editorial', dots:['#efefef','#005fa3','#5c3f8a'], bg:'#efefef', fg:'#181818', bd:'#cbcbcb' },
-  { id:'forest',    name:'Forest Dusk',   desc:'Verde oscuro',   dots:['#1b2620','#4ecda0','#a07ade'], bg:'#1b2620', fg:'#d0e8d4', bd:'#2a3832' },
-  { id:'sepia',     name:'Sepia Studio',  desc:'Marrón cálido',  dots:['#201610','#e09a28','#c87850'], bg:'#201610', fg:'#eee0b8', bd:'#34261a' },
   { id:'arctic',    name:'Arctic White',  desc:'Blanco polar',   dots:['#f6f9fc','#0055aa','#4a3490'], bg:'#f6f9fc', fg:'#0c1a28', bd:'#d0dce9' },
-  { id:'glass',     name:'Liquid Glass',  desc:'iOS 26 · Claro', dots:['#dce8f5','#0066cc','#5e35b1'], bg:'#dce8f5', fg:'#0a1628', bd:'rgba(200,220,240,0.6)' },
-  { id:'glass-dark',name:'Glass Oscuro',  desc:'iOS 26 · Oscuro',dots:['#12182a','#4ab3ff','#a78bfa'], bg:'#12182a', fg:'#e0eeff', bd:'rgba(255,255,255,0.12)' },
+  { id:'glass',     name:'Liquid Glass',  desc:'iOS 26 · Claro', dots:['#e8f2ff','#0066cc','#7c3aed'], bg:'linear-gradient(135deg,#e8f2ff,#f0e8ff)', fg:'#0a1628', bd:'rgba(255,255,255,0.55)' },
+  { id:'glass-dark',name:'Glass Oscuro',  desc:'iOS 26 · Oscuro',dots:['#080c18','#818cf8','#c084fc'], bg:'linear-gradient(135deg,#080c18,#0d0820)', fg:'#e8e8ff', bd:'rgba(130,120,255,0.18)' },
 ];
 
 let currentTheme = 'slate';
@@ -3489,7 +3539,7 @@ function renderThemeGrid() {
   THEMES.forEach(t => {
     const d = document.createElement('div');
     d.className = 'tc' + (t.id === currentTheme ? ' active' : '');
-    d.style.cssText = 'background:'+t.bg+';color:'+t.fg+';border-color:'+(t.id===currentTheme?t.dots[1]:t.bd);
+    d.style.cssText = (t.bg.indexOf('gradient')>=0?'background:'+t.bg:('background:'+t.bg))+';color:'+t.fg+';border-color:'+(t.id===currentTheme?t.dots[1]:t.bd);
     const sw = t.dots.map(c => '<div class="tc-dot" style="background:'+c+'"></div>').join('');
     d.innerHTML = '<div class="tc-sw">'+sw+'</div>'
       + '<div class="tc-nm" style="color:'+t.fg+'">'+t.name+'</div>'
@@ -3502,12 +3552,13 @@ function renderThemeGrid() {
 // ═══════════════════════════════════════════════════════
 //  TTS ENGINE — Web Speech API
 // ═══════════════════════════════════════════════════════
-let ttsUtter      = null;
-let ttsPlaying    = false;
-let ttsPaused     = false;
-let ttsCharIndex  = 0;    // last known char position during reading
-let ttsFullText   = '';   // full text being read (for resume-from-position)
-let ttsResumeTarget = null; // target to resume after pause
+let ttsUtter             = null;
+let ttsPlaying           = false;
+let ttsPaused            = false;
+let ttsCharIndex         = 0;      // last known char position
+let ttsFullText          = '';     // full text being read
+let ttsResumeTarget      = null;
+let _ttsPausingDelib     = false;  // true while deliberately cancelling for pause
 
 function ttsGetVoice() {
   const voices = window.speechSynthesis.getVoices();
@@ -3656,17 +3707,19 @@ function ttsRead(text, fromChar) {
     ttsPaused = false;
     ttsUIState('playing');
   };
-  ttsUtter.onend = (e) => {
-    // Only mark idle if this is a natural end, not a cancel-to-resume
-    if (!ttsPaused) {
-      ttsPlaying = false;
-      ttsCharIndex = 0;
-      ttsUIState('idle');
-    }
+  ttsUtter.onend = function() {
+    // If we deliberately cancelled for pause, don't reset position
+    if (_ttsPausingDelib || ttsPaused) return;
+    ttsPlaying   = false;
+    ttsCharIndex = 0;
+    ttsUIState('idle');
   };
-  ttsUtter.onerror = () => {
-    ttsPlaying = false;
-    ttsPaused  = false;
+  ttsUtter.onerror = function() {
+    // If we deliberately cancelled (pause simulation), don't reset position
+    if (_ttsPausingDelib) { _ttsPausingDelib = false; return; }
+    if (ttsPaused) return; // paused state — keep position
+    ttsPlaying   = false;
+    ttsPaused    = false;
     ttsCharIndex = 0;
     ttsUIState('idle');
   };
@@ -3678,44 +3731,56 @@ function ttsPauseResume() {
   if (!('speechSynthesis' in window)) return;
 
   if (ttsPaused) {
-    // Try native resume first
+    // RESUME: re-read from saved position
+    var savedChar = ttsCharIndex;
+    var savedText = ttsFullText;
+    var savedTarget = ttsTarget;
+    if (!savedText) return;
+    ttsPaused = false;
+    ttsUIState('playing');
+    // Try native resume first (works on some browsers)
     window.speechSynthesis.resume();
-
-    // Safari workaround: if still paused after 120ms, re-read from position
-    setTimeout(() => {
-      if (ttsPaused) {
-        ttsPaused = false;
-        ttsResumeTarget = ttsTarget;
-        const savedChar = ttsCharIndex;
-        const savedText = ttsFullText;
+    // After brief delay, check if it worked; if not, restart from position
+    setTimeout(function() {
+      if (!ttsPlaying || ttsPaused) {
+        // Native resume didn't work — restart from saved position
+        _ttsPausingDelib = true;
         window.speechSynthesis.cancel();
-        setTimeout(() => {
+        setTimeout(function() {
+          _ttsPausingDelib = false;
+          ttsTarget = savedTarget;
           ttsRead(savedText, savedChar);
-        }, 80);
+        }, 60);
       }
-    }, 120);
+    }, 150);
 
   } else if (ttsPlaying) {
-    // Save position then try native pause
-    const savedChar = ttsCharIndex;
+    // PAUSE: save position first, then cancel
+    var savedChar2 = ttsCharIndex;
+    var savedText2 = ttsFullText;
+    // Try native pause
     window.speechSynthesis.pause();
-
-    // Safari workaround: if pause didn't work (still playing), simulate it
-    setTimeout(() => {
-      if (!ttsPaused && ttsPlaying) {
-        // Native pause failed — cancel and remember position
+    // After brief delay, verify pause worked
+    setTimeout(function() {
+      if (!ttsPaused) {
+        // Native pause failed (Safari) — simulate with cancel + remember position
+        ttsCharIndex = savedChar2;  // restore in case onend/onerror already reset it
+        ttsFullText  = savedText2;
+        _ttsPausingDelib = true;
         ttsPaused = true;
+        ttsPlaying = false;
         ttsUIState('paused');
         window.speechSynthesis.cancel();
-        ttsPlaying = false;
-        ttsCharIndex = savedChar; // preserve position
+        setTimeout(function() { _ttsPausingDelib = false; }, 100);
       }
     }, 80);
   }
 }
 
 function ttsStop() {
+  _ttsPausingDelib = true;  // prevent onerror from interfering
   if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  _ttsPausingDelib = false;
   ttsPlaying    = false;
   ttsPaused     = false;
   ttsTarget     = null;
@@ -3773,7 +3838,9 @@ function ttsToggle(target) {
 }
 
 function ttsRestart(target) {
+  _ttsPausingDelib = true;
   window.speechSynthesis.cancel();
+  _ttsPausingDelib = false;
   ttsPlaying   = false;
   ttsPaused    = false;
   ttsCharIndex = 0;
@@ -3828,7 +3895,7 @@ function ttsUIPlaying(p){ ttsUIState(p?'playing':'idle'); }
 function ttsSpeedDown() {
   S.ttsSpeed = Math.max(0.5, (S.ttsSpeed || 1.0) - 0.1);
   S.ttsSpeed = Math.round(S.ttsSpeed * 10) / 10;
-  document.getElementById('tts-speed-val').textContent = S.ttsSpeed.toFixed(1) + '×';
+  syncAllSpeedDisplays();
   saveS();
   ttsApplyNewSpeed();
 }
@@ -3836,7 +3903,7 @@ function ttsSpeedDown() {
 function ttsSpeedUp() {
   S.ttsSpeed = Math.min(2.0, (S.ttsSpeed || 1.0) + 0.1);
   S.ttsSpeed = Math.round(S.ttsSpeed * 10) / 10;
-  document.getElementById('tts-speed-val').textContent = S.ttsSpeed.toFixed(1) + '×';
+  syncAllSpeedDisplays();
   saveS();
   ttsApplyNewSpeed();
 }
@@ -3849,11 +3916,12 @@ function ttsApplyNewSpeed() {
   const savedChar   = ttsCharIndex;
   const savedText   = ttsFullText;
   if (!savedText) return;
+  _ttsPausingDelib = true;
   window.speechSynthesis.cancel();
   ttsPlaying = false;
   ttsPaused  = false;
-  // Short delay to let browser process cancel, then restart
-  setTimeout(() => {
+  setTimeout(function() {
+    _ttsPausingDelib = false;
     ttsTarget = savedTarget;
     ttsRead(savedText, savedChar);
   }, 60);
@@ -3898,7 +3966,7 @@ function openQuizThemePicker() {
   THEMES.forEach(t => {
     const d = document.createElement('div');
     d.className = 'tc' + (t.id === currentTheme ? ' active' : '');
-    d.style.cssText = 'background:'+t.bg+';color:'+t.fg+';border-color:'+(t.id===currentTheme?t.dots[1]:t.bd)+';padding:8px 4px;';
+    d.style.cssText = (t.bg.indexOf('gradient')>=0?'background:'+t.bg:('background:'+t.bg))+';color:'+t.fg+';border-color:'+(t.id===currentTheme?t.dots[1]:t.bd)+';padding:8px 4px;';
     const sw = t.dots.map(c => '<div class="tc-dot" style="background:'+c+'"></div>').join('');
     d.innerHTML = '<div class="tc-sw">'+sw+'</div><div class="tc-nm" style="color:'+t.fg+';font-size:.58rem">'+t.name+'</div>';
     d.onclick = () => { applyTheme(t.id); closeQuizThemePop(); };
@@ -4605,9 +4673,8 @@ function ivRenderQ() {
   const ttsBar = document.getElementById('iv-tts-bar');
   if (ttsBar) ttsBar.style.display = S.tts ? 'flex' : 'none';
   // Sync speed display
-  const speedVal = document.getElementById('iv-speed-val');
-  if (speedVal) speedVal.textContent = (S.ttsSpeed||1.0).toFixed(1) + '×';
-
+  var _svQ1 = document.getElementById('tts-speed-val'); if(_svQ1) _svQ1.textContent = (S.ttsSpeed||1.0).toFixed(1)+'×';
+  syncAllSpeedDisplays();
   // Progress dots
   ivRenderDots();
 
@@ -4777,8 +4844,9 @@ function ivTtsToggle(target) {
 function ivTtsRestart(target) {
   ttsStop();
   IV.ivTarget = target;
-  const text = target==='q' ? (IV.ivLastQ||IV.questions[IV.idx]?.q||'') : (IV.ivLastAns||IV.questions[IV.idx]?.ex||'');
-  if (text) setTimeout(()=>ttsRead(text,0),80);
+  var _ivQ2 = IV.questions && IV.questions[IV.idx];
+  var text = target==='q' ? (IV.ivLastQ||(_ivQ2&&_ivQ2.q)||'') : (IV.ivLastAns||(_ivQ2&&_ivQ2.ex)||'');
+  if (text) setTimeout(function(){ ttsRead(text, 0); }, 80);
 }
 
 function ivSyncTtsUI() {
